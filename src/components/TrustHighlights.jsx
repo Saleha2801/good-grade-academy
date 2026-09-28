@@ -4,10 +4,10 @@ import { academyInfo } from '../config/academyInfo';
 
 export default function TrustHighlights() {
   return (
-    <section className="relative z-20 -mt-8 sm:-mt-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative z-10 -mt-6 sm:-mt-8 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-4">
       <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-200/90 bg-linear-to-r from-white via-sky-50/40 to-emerald-50/40">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 divide-y md:divide-y-0 md:divide-x divide-slate-200">
-          
+
           {/* Highlight 1: Since 2017 & 9+ Years */}
           <div className="flex items-center gap-5 sm:gap-6 py-2 md:py-0 md:pr-6">
             <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-linear-to-br from-[#0f2c59] to-[#0369a1] text-white flex flex-col items-center justify-center shrink-0 shadow-md">
@@ -23,7 +23,7 @@ export default function TrustHighlights() {
                 <Calendar className="w-3.5 h-3.5 text-sky-700" />
                 <span>{academyInfo.established}</span>
               </div>
-              <h3 className="text-xl sm:text-2xl font-extrabold text-[#0f2c59] tracking-tight">
+              <h3 className="text-lg sm:text-2xl font-extrabold text-[#0f2c59] tracking-tight leading-tight">
                 {academyInfo.experience}
               </h3>
               <p className="text-xs sm:text-sm text-slate-500 font-medium">

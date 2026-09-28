@@ -13,20 +13,30 @@ export default function ResultCard({ student }) {
     }
   };
 
+  // Sachi and Rutuja cutouts fill 95% of canvas, while other students have transparent padding
+  // Scale compensation brings all cutouts to a uniform, harmonious visual scale without image alteration
+  const isFullBleed = student.name.includes('Sachi') || student.name.includes('Rutuja');
+  const scaleClass = isFullBleed
+    ? 'scale-90 group-hover:scale-95'
+    : 'scale-145 group-hover:scale-150';
+
   return (
     <div className="bg-white rounded-2xl border border-slate-200 hover:border-emerald-300 shadow-2xs hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden group">
-      {/* Student Photo Container */}
-      <div className="relative aspect-4/5 w-full bg-linear-to-b from-sky-50/70 via-slate-50 to-emerald-50/40 p-3 sm:p-4 flex items-end justify-center overflow-hidden">
-        <img
-          src={imgSrc}
-          alt={`Result of ${student.name}`}
-          onError={handleImageError}
-          loading="lazy"
-          className="w-full h-full object-contain object-bottom transition-transform duration-300 group-hover:scale-105"
-        />
+      {/* Student Photo Container - Fixed responsive height, perfectly centered */}
+      <div className="relative h-52 sm:h-60 w-full bg-linear-to-b from-sky-50/50 via-slate-50 to-emerald-50/30 p-3 sm:p-4 flex items-center justify-center overflow-hidden">
+        {/* Centered Image Wrapper */}
+        <div className="w-full h-full flex items-center justify-center pointer-events-none">
+          <img
+            src={imgSrc}
+            alt={`Result of ${student.name}`}
+            onError={handleImageError}
+            loading="lazy"
+            className={`max-w-full max-h-full object-contain object-center transition-transform duration-300 ${scaleClass}`}
+          />
+        </div>
 
         {/* Percentage Floating Badge */}
-        <div className="absolute top-3 right-3 bg-linear-to-r from-emerald-600 to-teal-700 text-white font-extrabold text-xs sm:text-sm px-2.5 py-1 rounded-xl shadow-md border border-emerald-500/40 flex items-center gap-1">
+        <div className="absolute top-2.5 right-2.5 bg-linear-to-r from-emerald-600 to-teal-700 text-white font-extrabold text-xs sm:text-sm px-2.5 py-1 rounded-xl shadow-md border border-emerald-500/40 flex items-center gap-1 z-10">
           <Award className="w-3.5 h-3.5 text-amber-300 fill-amber-300 shrink-0" />
           <span>{student.percentage}%</span>
         </div>

@@ -60,7 +60,7 @@ export default function AboutSection({ onOpenEnquiry }) {
                 </div>
 
                 {/* Bottom Highlight Box */}
-                <div className="p-4 bg-white rounded-xl mt-3 border border-slate-100 shadow-2xs">
+                <div className="p-4 bg-white rounded-2xl mt-3 border border-slate-200/90 shadow-2xs space-y-3">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-xl bg-sky-50 text-[#0f2c59] flex items-center justify-center shrink-0 font-bold">
                       <Calendar className="w-5 h-5 text-sky-700" />
@@ -74,17 +74,17 @@ export default function AboutSection({ onOpenEnquiry }) {
                       </p>
                     </div>
                   </div>
-                </div>
-              </div>
 
-              {/* Trust Badge Strip */}
-              <div className="hidden sm:block absolute -bottom-5 -right-5 bg-[#0f2c59] text-white p-4 rounded-2xl shadow-lg max-w-[210px]">
-                <p className="text-xs font-extrabold tracking-wide uppercase text-sky-300">
-                  {academyInfo.established}
-                </p>
-                <p className="text-[11px] text-slate-200 mt-1 leading-snug">
-                  Personal attention, concept clarity, and 100% results.
-                </p>
+                  <div className="pt-2.5 border-t border-slate-100 flex items-center justify-between text-xs">
+                    <span className="font-bold text-[#0f2c59] flex items-center gap-1.5">
+                      <Award className="w-4 h-4 text-emerald-600" />
+                      <span>{academyInfo.resultsHighlight}</span>
+                    </span>
+                    <span className="text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
+                      Concept-First Mentoring
+                    </span>
+                  </div>
+                </div>
               </div>
 
             </div>

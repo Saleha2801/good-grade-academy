@@ -1,11 +1,9 @@
 import React from 'react';
 import {
   MapPin,
-  Phone,
   Mail,
   Clock,
   MessageCircle,
-  ExternalLink,
   ChevronRight,
   Heart,
 } from 'lucide-react';
@@ -142,12 +140,6 @@ export default function Footer({ onOpenEnquiry }) {
                 <span>{academyInfo.address.fullAddress}</span>
               </li>
               <li className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-sky-600 shrink-0" />
-                <a href={`tel:${academyInfo.phone.tel}`} className="hover:text-sky-700 transition-colors">
-                  {academyInfo.phone.display}
-                </a>
-              </li>
-              <li className="flex items-center gap-2.5">
                 <MessageCircle className="w-4 h-4 text-emerald-600 shrink-0" />
                 <a
                   href={createWhatsAppUrl()}
@@ -160,15 +152,17 @@ export default function Footer({ onOpenEnquiry }) {
               </li>
               <li className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-slate-400 shrink-0" />
-                <a href={`mailto:${academyInfo.email}`} className="hover:text-slate-900 transition-colors">
+                <a href={`mailto:${academyInfo.email}`} className="hover:text-slate-900 transition-colors break-all">
                   {academyInfo.email}
                 </a>
               </li>
               <li className="flex items-start gap-2.5 pt-1 text-xs text-slate-500">
                 <Clock className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
-                <div>
-                  <p>{academyInfo.workingHours.weekdays}</p>
-                  <p>{academyInfo.workingHours.sunday}</p>
+                <div className="space-y-0.5">
+                  <p className="font-semibold text-slate-700">{academyInfo.workingHours.weekdaysTitle}:</p>
+                  <p className="text-emerald-800 font-bold">{academyInfo.workingHours.slot1}</p>
+                  <p className="text-emerald-800 font-bold">{academyInfo.workingHours.slot2}</p>
+                  <p className="pt-0.5 text-rose-600 font-bold">{academyInfo.workingHours.sunday}</p>
                 </div>
               </li>
             </ul>
@@ -192,14 +186,13 @@ export default function Footer({ onOpenEnquiry }) {
                 Enquire for Admission
               </button>
               <a
-                href={academyInfo.googleMapsUrl}
+                href={createWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-2 px-4 text-center font-semibold text-xs text-sky-800 bg-sky-50 hover:bg-sky-100 rounded-xl border border-sky-200 transition-colors flex items-center justify-center gap-1.5"
+                className="w-full py-2 px-4 text-center font-semibold text-xs text-emerald-800 bg-emerald-50 hover:bg-emerald-100 rounded-xl border border-emerald-200 transition-colors flex items-center justify-center gap-1.5"
               >
-                <MapPin className="w-3.5 h-3.5" />
-                <span>Locate on Google Maps</span>
-                <ExternalLink className="w-3 h-3" />
+                <MessageCircle className="w-3.5 h-3.5" />
+                <span>Chat with Counselor</span>
               </a>
             </div>
           </div>

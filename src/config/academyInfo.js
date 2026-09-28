@@ -45,16 +45,20 @@ export const academyInfo = {
 
   address: {
     location:
-      "Opp. to Aqsa Masjid, near Wisdom English Medium High School, Vikas Nagar, Dehu Road",
+      "Opp to Aqsa Masjid, near Wisdom English Medium High School, Vikas Nagar, Dehu Road",
     fullAddress:
-      "Opp. to Aqsa Masjid, near Wisdom English Medium High School, Vikas Nagar, Dehu Road",
+      "Opp to Aqsa Masjid, near Wisdom English Medium High School, Vikas Nagar, Dehu Road",
   },
 
   googleMapsUrl:
-    "https://maps.google.com/?q=Opp.+to+Aqsa+Masjid,+near+Wisdom+English+Medium+High+School,+Vikas+Nagar,+Dehu+Road",
+    "https://maps.google.com/?q=Opp+to+Aqsa+Masjid,+near+Wisdom+English+Medium+High+School,+Vikas+Nagar,+Dehu+Road",
 
   workingHours: {
     weekdays: "Monday to Saturday: 11:00 AM – 1:30 PM & 4:00 PM – 8:00 PM",
+    weekdaysTitle: "Monday to Saturday",
+    slot1: "11:00 AM to 1:30 PM",
+    slot2: "4:00 PM to 8:00 PM",
+    sundayTitle: "Sunday",
     sunday: "Sunday: Holiday",
   },
 

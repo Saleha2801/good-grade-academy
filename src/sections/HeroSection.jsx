@@ -30,10 +30,24 @@ export default function HeroSection({ onOpenEnquiry }) {
   return (
     <section
       id="home"
-      className="relative pt-28 pb-16 sm:pt-36 sm:pb-24 lg:pt-40 lg:pb-24 overflow-hidden bg-linear-to-b from-sky-50/70 via-white to-slate-50/60"
+      className="relative pt-28 pb-16 sm:pt-36 sm:pb-20 lg:pt-40 lg:pb-24 overflow-hidden bg-linear-to-b from-[#f0f7ff] via-[#f8fbfa] to-[#ffffff]"
     >
-      {/* Background Soft Glow Elements */}
-      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-radial from-sky-100/50 via-emerald-50/30 to-transparent blur-3xl pointer-events-none -z-10" />
+      {/* Subtle academic background textures & soft blooms (Strictly LIGHT theme) */}
+      <div 
+        className="absolute inset-0 pointer-events-none opacity-[0.45] -z-10" 
+        style={{
+          backgroundImage: `radial-gradient(circle at 1px 1px, rgba(15, 44, 89, 0.07) 1px, transparent 0)`,
+          backgroundSize: '32px 32px'
+        }}
+      />
+      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-radial from-sky-100/60 via-emerald-50/40 to-transparent blur-3xl pointer-events-none -z-10" />
+      <div className="absolute top-1/3 -left-32 w-80 h-80 rounded-full bg-emerald-100/30 blur-3xl pointer-events-none -z-10" />
+      <div className="absolute top-1/4 -right-32 w-96 h-96 rounded-full bg-sky-100/40 blur-3xl pointer-events-none -z-10" />
+      
+      {/* Subtle geometric contour rings - modern & educational */}
+      <div className="absolute top-16 right-12 w-80 h-80 rounded-full border border-sky-200/40 pointer-events-none -z-10 hidden xl:block" />
+      <div className="absolute top-28 right-24 w-60 h-60 rounded-full border border-emerald-200/35 pointer-events-none -z-10 hidden xl:block" />
+      <div className="absolute bottom-12 left-10 w-72 h-72 rounded-full border border-slate-200/50 pointer-events-none -z-10 hidden lg:block" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
@@ -41,28 +55,34 @@ export default function HeroSection({ onOpenEnquiry }) {
           {/* Left Column: Headlines & Offerings (7 cols on lg) */}
           <div className="lg:col-span-7 space-y-6 sm:space-y-7 text-center lg:text-left">
             
-            {/* Tagline & Since 2017 Pill */}
+            {/* Since 2017 & Trust Indicator Pill */}
             <div className="inline-flex flex-wrap items-center justify-center lg:justify-start gap-2 px-4 py-1.5 rounded-full bg-white border border-emerald-200/90 shadow-2xs">
               <span className="flex h-2 w-2 relative">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
               </span>
-              <span className="text-xs sm:text-sm font-bold text-emerald-800 tracking-wide">
-                {academyInfo.tagline}
+              <span className="text-xs sm:text-sm font-extrabold text-emerald-800 tracking-wide">
+                {academyInfo.established}
               </span>
               <span className="text-slate-300 hidden sm:inline">•</span>
-              <span className="text-xs font-bold text-[#0f2c59] bg-sky-50 px-2 py-0.5 rounded-md border border-sky-200/80">
-                {academyInfo.established}
+              <span className="text-xs font-bold text-[#0f2c59] bg-sky-50 px-2.5 py-0.5 rounded-md border border-sky-200/80">
+                {academyInfo.experience}
               </span>
             </div>
 
-            {/* Main Headline */}
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-[#0f2c59] tracking-tight leading-[1.14]">
-              {academyInfo.name}
-              <span className="block text-2xl sm:text-4xl lg:text-5xl font-extrabold text-transparent bg-clip-text bg-linear-to-r from-emerald-600 via-teal-600 to-sky-700 mt-2">
-                Learn Today | Grow Tomorrow
-              </span>
-            </h1>
+            {/* Dominant Academy Name Heading & Supporting Tagline */}
+            <div className="space-y-3">
+              <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-[#0f2c59] tracking-tight leading-[1.1] break-words">
+                {academyInfo.name}
+              </h1>
+
+              {/* Supporting Subheading / Tagline */}
+              <div className="text-lg sm:text-xl md:text-2xl font-bold text-emerald-700 tracking-tight flex items-center justify-center lg:justify-start gap-2.5">
+                <span className="w-6 h-0.5 bg-emerald-500 rounded-full hidden sm:inline-block" />
+                <span>{academyInfo.tagline}</span>
+                <span className="w-6 h-0.5 bg-emerald-500 rounded-full hidden sm:inline-block" />
+              </div>
+            </div>
 
             {/* Specific Academic Scope: 1st to 10th Std, SSC, All Subjects */}
             <div className="bg-white/90 backdrop-blur-xs p-4 rounded-2xl border border-slate-200 shadow-2xs max-w-xl mx-auto lg:mx-0">
@@ -215,47 +235,65 @@ export default function HeroSection({ onOpenEnquiry }) {
                   </div>
                 </div>
 
-                {/* Lower Card Highlight */}
-                <div className="mt-4 p-4 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-between gap-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
-                      <GraduationCap className="w-5 h-5" />
+                {/* Visual Card Integrated Highlights - Clean, responsive, zero overlap */}
+                <div className="mt-4 space-y-3">
+                  {/* Two Prominent Trust Highlight Badges: 100% Results & Since 2017 */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    {/* 100% Results Badge */}
+                    <div className="p-3 rounded-2xl bg-emerald-50/90 border border-emerald-200 flex items-center gap-3 shadow-2xs">
+                      <div className="w-10 h-10 rounded-xl bg-linear-to-br from-emerald-600 to-teal-700 text-white flex items-center justify-center shrink-0 shadow-xs">
+                        <Award className="w-5 h-5 text-amber-300 fill-amber-300" />
+                      </div>
+                      <div>
+                        <span className="block text-sm font-black text-emerald-950 leading-tight">
+                          {academyInfo.resultsHighlight}
+                        </span>
+                        <span className="block text-[11px] text-emerald-700 font-semibold leading-tight mt-0.5">
+                          Stated Academy Record
+                        </span>
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-xs font-bold text-slate-900">Maharashtra State Board (SSC)</p>
-                      <p className="text-[11px] text-slate-500">Structured syllabus & regular tests</p>
+
+                    {/* Since 2017 Badge */}
+                    <div className="p-3 rounded-2xl bg-sky-50/90 border border-sky-200 flex items-center gap-3 shadow-2xs">
+                      <div className="w-10 h-10 rounded-xl bg-linear-to-br from-[#0f2c59] to-[#0369a1] text-white flex items-center justify-center shrink-0 shadow-xs">
+                        <Calendar className="w-5 h-5 text-sky-200" />
+                      </div>
+                      <div>
+                        <span className="block text-sm font-black text-[#0f2c59] leading-tight">
+                          {academyInfo.established}
+                        </span>
+                        <span className="block text-[11px] text-sky-700 font-semibold leading-tight mt-0.5">
+                          {academyInfo.experience}
+                        </span>
+                      </div>
                     </div>
                   </div>
-                  <button
-                    type="button"
-                    onClick={() => onOpenEnquiry()}
-                    className="text-xs font-bold text-emerald-700 hover:text-emerald-800 hover:underline flex items-center gap-1 shrink-0"
-                  >
-                    <span>Enquire</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              </div>
 
-              {/* Floating Mini Highlight Card 1 */}
-              <div className="absolute -bottom-4 -left-3 sm:-left-6 bg-white rounded-2xl p-3.5 shadow-lg border border-slate-200/90 flex items-center gap-3 max-w-[210px] sm:max-w-[240px]">
-                <div className="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-700 shrink-0">
-                  <span className="font-extrabold text-sm">100%</span>
-                </div>
-                <div>
-                  <span className="block text-xs font-bold text-slate-900">100% Results</span>
-                  <span className="block text-[11px] text-slate-500">Stated academy record</span>
-                </div>
-              </div>
-
-              {/* Floating Mini Highlight Card 2 */}
-              <div className="hidden sm:flex absolute -top-5 -right-5 bg-white rounded-2xl p-3 shadow-lg border border-slate-200/90 items-center gap-2.5">
-                <div className="w-8 h-8 rounded-full bg-[#0f2c59] text-white flex items-center justify-center font-bold text-xs">
-                  9+
-                </div>
-                <div className="text-left pr-2">
-                  <p className="text-[11px] font-bold text-slate-900">Years Experience</p>
-                  <p className="text-[10px] text-emerald-700 font-semibold">Since 2017</p>
+                  {/* Syllabus & Quick Action Row */}
+                  <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-center justify-between gap-3">
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+                        <GraduationCap className="w-4 h-4" />
+                      </div>
+                      <div>
+                        <p className="text-xs font-bold text-slate-900 leading-tight">
+                          Maharashtra State Board (SSC)
+                        </p>
+                        <p className="text-[11px] text-slate-500 leading-tight">
+                          1st to 10th Standard • All Subjects
+                        </p>
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => onOpenEnquiry()}
+                      className="text-xs font-bold text-emerald-700 hover:text-emerald-800 bg-white hover:bg-emerald-50 px-3 py-1.5 rounded-xl border border-emerald-200 transition-colors flex items-center gap-1 shrink-0"
+                    >
+                      <span>Enquire</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
                 </div>
               </div>
 
