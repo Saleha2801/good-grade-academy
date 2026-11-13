@@ -13,7 +13,7 @@ export const studentResults = [
     id: 1,
     name: "Sachi Agarwal",
     percentage: "93.40",
-    image: "/images/results/Sachi Agarwal.png",
+    image: "/images/results/Ansh Agarwal.png",
   },
   {
     id: 2,
@@ -67,7 +67,7 @@ export const studentResults = [
     id: 10,
     name: "Ansh Agarwal",
     percentage: "85.00",
-    image: "/images/results/Ansh Agarwal.png",
+    image: "/images/results/Sachi Agarwal.png",
   },
   {
     id: 11,

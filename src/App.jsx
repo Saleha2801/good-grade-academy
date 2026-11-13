@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import EnquiryModal from './components/EnquiryModal';
 import ReviewModal from './components/ReviewModal';
+import AdminReviewModal from './components/AdminReviewModal';
 import LightboxModal from './components/LightboxModal';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 
@@ -15,21 +16,48 @@ import ReviewSection from './sections/ReviewSection';
 import GallerySection from './sections/GallerySection';
 import ContactSection from './sections/ContactSection';
 
-import { academyInfo } from './config/academyInfo';
+import { galleryItems } from './config/galleryData';
+import { fetchApprovedReviews } from './lib/supabase';
 
 export default function App() {
   // Enquiry Modal state
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState('');
 
-  // Review Modal state
+  // Review Modal state (Public Submission)
   const [isReviewOpen, setIsReviewOpen] = useState(false);
-  const [pendingReviews, setPendingReviews] = useState([]);
+
+  // Admin Review Modal state (Moderation Portal)
+  const [isAdminOpen, setIsAdminOpen] = useState(false);
+
+  // Reviews Data from Supabase
+  const [approvedReviews, setApprovedReviews] = useState([]);
+  const [isLoadingReviews, setIsLoadingReviews] = useState(true);
 
   // Lightbox Modal state
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
+  // Fetch approved reviews from Supabase database
+  const loadReviews = useCallback(async () => {
+    setIsLoadingReviews(true);
+    try {
+      const { data } = await fetchApprovedReviews();
+      if (Array.isArray(data)) {
+        setApprovedReviews(data);
+      }
+    } catch (err) {
+      console.warn('Could not load reviews:', err);
+    } finally {
+      setIsLoadingReviews(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    loadReviews();
+  }, [loadReviews]);
+
+  // Modal Handlers
   const handleOpenEnquiry = (courseName = '') => {
     setSelectedCourse(courseName);
     setIsEnquiryOpen(true);
@@ -48,9 +76,17 @@ export default function App() {
     setIsReviewOpen(false);
   };
 
-  const handleReviewSubmitted = (newReview) => {
-    // Add pending review to local state ready for moderation / future API persistence
-    setPendingReviews((prev) => [newReview, ...prev]);
+  const handleOpenAdmin = () => {
+    setIsAdminOpen(true);
+  };
+
+  const handleCloseAdmin = () => {
+    setIsAdminOpen(false);
+  };
+
+  const handleReviewSubmitted = () => {
+    // Review is saved with status='pending' in Supabase.
+    // It will appear publicly once approved in the Admin portal.
   };
 
   const handleOpenLightbox = (index) => {
@@ -64,13 +100,13 @@ export default function App() {
 
   const handlePrevLightbox = () => {
     setLightboxIndex((prev) =>
-      prev === 0 ? academyInfo.gallery.length - 1 : prev - 1
+      prev === 0 ? galleryItems.length - 1 : prev - 1
     );
   };
 
   const handleNextLightbox = () => {
     setLightboxIndex((prev) =>
-      prev === academyInfo.gallery.length - 1 ? 0 : prev + 1
+      prev === galleryItems.length - 1 ? 0 : prev + 1
     );
   };
 
@@ -96,13 +132,15 @@ export default function App() {
         {/* 4. Results */}
         <ResultsSection onOpenEnquiry={handleOpenEnquiry} />
 
-        {/* 5. Review */}
+        {/* 5. Review (Real Supabase Backend & Moderation) */}
         <ReviewSection
+          reviews={approvedReviews}
+          isLoading={isLoadingReviews}
           onOpenReviewModal={handleOpenReview}
-          pendingReviews={pendingReviews}
+          onOpenAdminModal={handleOpenAdmin}
         />
 
-        {/* 6. Gallery */}
+        {/* 6. Gallery (Real Client Posters & Categorized Tabs) */}
         <GallerySection onOpenLightbox={handleOpenLightbox} />
 
         {/* 7. Contact */}
@@ -122,18 +160,25 @@ export default function App() {
         preselectedCourse={selectedCourse}
       />
 
-      {/* Reusable Review Submission Modal */}
+      {/* Public Review Submission Modal */}
       <ReviewModal
         isOpen={isReviewOpen}
         onClose={handleCloseReview}
         onReviewSubmitted={handleReviewSubmitted}
       />
 
+      {/* Admin Review Moderation Modal */}
+      <AdminReviewModal
+        isOpen={isAdminOpen}
+        onClose={handleCloseAdmin}
+        onReviewsUpdated={loadReviews}
+      />
+
       {/* Gallery Lightbox Modal */}
       <LightboxModal
         isOpen={lightboxOpen}
         onClose={handleCloseLightbox}
-        items={academyInfo.gallery}
+        items={galleryItems}
         currentIndex={lightboxIndex}
         onPrev={handlePrevLightbox}
         onNext={handleNextLightbox}

@@ -13,9 +13,9 @@ export default function ResultCard({ student }) {
     }
   };
 
-  // Sachi and Rutuja cutouts fill 95% of canvas, while other students have transparent padding
+  // Sachi Agarwal.png and Rutuja Mulik.png cutouts fill 95% of canvas, while other students have transparent padding
   // Scale compensation brings all cutouts to a uniform, harmonious visual scale without image alteration
-  const isFullBleed = student.name.includes('Sachi') || student.name.includes('Rutuja');
+  const isFullBleed = student.image.includes('Sachi Agarwal') || student.image.includes('Rutuja Mulik');
   const scaleClass = isFullBleed
     ? 'scale-90 group-hover:scale-95'
     : 'scale-145 group-hover:scale-150';

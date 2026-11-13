@@ -1,15 +1,16 @@
 /**
  * Centralized Configuration for Good Grade Academy
  * 
- * REAL CLIENT SPECIFICATIONS:
+ * LATEST CLIENT SPECIFICATIONS:
  * - Academy Name: Good Grade Academy
  * - Tagline: "Learn Today | Grow Tomorrow"
  * - Highlights: "Since 2017", "9+ Years of Academic Experience", "100% Results"
- * - Offerings: Classes 1st to 10th Standard, Maharashtra State Board (SSC), All Subjects
+ * - Offerings: Classes 1st to 10th Standard (SSC), 11th Science, 11th Commerce, 11th & 12th Science MHCET Prep
+ * - Official Contact Number: 9185257864
+ * - WhatsApp (India Code 91): +91 91852 57864 (normalized: 919185257864)
  * - Email: naazparvez8588@gmail.com
- * - Location: Opp. to Aqsa Masjid, near Wisdom English Medium High School, Vikas Nagar, Dehu Road
+ * - Location: Vikas Nagar, Near Disha Computer Classes, Opp. to Shinde Petrol Pump
  * - Timings: Mon-Sat 11:00 AM–1:30 PM & 4:00 PM–8:00 PM | Sunday: Holiday
- * - WhatsApp (dev/testing): +91 77759 86424 (normalized: 917775986424)
  */
 
 export const academyInfo = {
@@ -28,30 +29,32 @@ export const academyInfo = {
   board: "Maharashtra State Board (SSC)",
   subjects: "All Subjects",
 
-  // Contact Details
+  // Contact Details (Updated from latest client promotional posters)
   whatsapp: {
-    display: "+91 77759 86424",
-    number: "917775986424",
+    display: "+91 91852 57864",
+    number: "919185257864",
+    rawNumber: "9185257864",
     defaultChatText:
-      "Hello Good Grade Academy, I would like to know more about your courses.",
+      "Hello Good Grade Academy, I would like to know more about your courses and admissions.",
   },
 
   phone: {
-    display: "+91 77759 86424",
-    tel: "+917775986424",
+    display: "+91 91852 57864",
+    tel: "+919185257864",
+    rawNumber: "9185257864",
   },
 
   email: "naazparvez8588@gmail.com",
 
   address: {
     location:
-      "Opp to Aqsa Masjid, near Wisdom English Medium High School, Vikas Nagar, Dehu Road",
+      "Vikas Nagar, Near Disha Computer Classes, Opp. to Shinde Petrol Pump",
     fullAddress:
-      "Opp to Aqsa Masjid, near Wisdom English Medium High School, Vikas Nagar, Dehu Road",
+      "Vikas Nagar, Near Disha Computer Classes, Opp. to Shinde Petrol Pump",
   },
 
   googleMapsUrl:
-    "https://maps.google.com/?q=Opp+to+Aqsa+Masjid,+near+Wisdom+English+Medium+High+School,+Vikas+Nagar,+Dehu+Road",
+    "https://maps.google.com/?q=Vikas+Nagar,+Near+Disha+Computer+Classes,+Opp.+to+Shinde+Petrol+Pump",
 
   workingHours: {
     weekdays: "Monday to Saturday: 11:00 AM – 1:30 PM & 4:00 PM – 8:00 PM",
@@ -268,39 +271,9 @@ export const academyInfo = {
     },
   ],
 
-  // Reviews Data (Clean structure ready for dynamic reviews / moderation)
-  reviews: [
-    {
-      id: "rev-sample-1",
-      name: "S. Kulkarni",
-      role: "Parent (Class 10 SSC Student)",
-      rating: 5,
-      date: "Academic Term",
-      comment:
-        "The personal attention given to each student has greatly improved my child's confidence in Mathematics & Science. Concepts are explained patiently and clearly.",
-      isSample: true,
-    },
-    {
-      id: "rev-sample-2",
-      name: "R. Sharma",
-      role: "Student (Class 10 SSC)",
-      rating: 5,
-      date: "Academic Term",
-      comment:
-        "The teachers take time to explain difficult numericals and grammar rules. The weekly revision tests helped me prepare thoroughly for my school exams.",
-      isSample: true,
-    },
-    {
-      id: "rev-sample-3",
-      name: "P. Deshmukh",
-      role: "Parent (Class 8 Student)",
-      rating: 5,
-      date: "Academic Term",
-      comment:
-        "Disciplined and friendly study environment with regular progress monitoring. Very satisfied with the concept-first coaching approach since 2017.",
-      isSample: true,
-    },
-  ],
+  // Reviews Data: Initial production database is completely empty.
+  // Live verified reviews are loaded dynamically from Supabase where status = 'approved'.
+  reviews: [],
 
   // Gallery Showcase (Neutral education visuals until client photos are supplied)
   gallery: [
