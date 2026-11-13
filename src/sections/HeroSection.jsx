@@ -68,6 +68,11 @@ export default function HeroSection({ onOpenEnquiry }) {
               <span className="text-xs font-bold text-[#0f2c59] bg-sky-50 px-2.5 py-0.5 rounded-md border border-sky-200/80">
                 {academyInfo.experience}
               </span>
+              <span className="text-slate-300 hidden sm:inline">•</span>
+              <span className="text-xs font-bold text-amber-900 bg-amber-50 px-2 py-0.5 rounded-md border border-amber-200/80 flex items-center gap-1">
+                <Sparkles className="w-3 h-3 text-amber-600" />
+                <span>Admissions 2026–27 Open</span>
+              </span>
             </div>
 
             {/* Dominant Academy Name Heading & Supporting Tagline */}
@@ -278,10 +283,10 @@ export default function HeroSection({ onOpenEnquiry }) {
                       </div>
                       <div>
                         <p className="text-xs font-bold text-slate-900 leading-tight">
-                          Maharashtra State Board (SSC)
+                          Maharashtra State Board (SSC & HSC)
                         </p>
                         <p className="text-[11px] text-slate-500 leading-tight">
-                          1st to 10th Standard • All Subjects
+                          1st to 10th • 11th Sci & Comm • MHCET Prep
                         </p>
                       </div>
                     </div>

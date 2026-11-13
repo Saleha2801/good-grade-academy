@@ -299,8 +299,9 @@ export default function ContactSection() {
                       >
                         <option value="">Select a Course or Grade...</option>
                         <option value="1st to 10th Standard (SSC - All Subjects)">1st to 10th Standard (SSC - All Subjects)</option>
-                        <option value="11th Science (Upcoming Batch)">11th Science (Upcoming Batch)</option>
-                        <option value="11th Commerce (Upcoming Batch)">11th Commerce (Upcoming Batch)</option>
+                        <option value="11th Science (Admissions Open 2026–27)">11th Science (Admissions Open 2026–27)</option>
+                        <option value="11th Commerce (Admissions Open 2026–27)">11th Commerce (Admissions Open 2026–27)</option>
+                        <option value="11th & 12th Science — MHCET Preparation (Admissions Open 2026–27)">11th & 12th Science — MHCET Preparation (Admissions Open 2026–27)</option>
                         <option value="General Admission Enquiry">General Admission Enquiry</option>
                       </select>
                     </div>

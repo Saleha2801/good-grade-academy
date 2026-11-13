@@ -62,6 +62,41 @@ export const academyInfo = {
     sunday: "Sunday: Holiday",
   },
 
+  // Admissions & New Batches Configuration (Configurable batch-start date)
+  admissions: {
+    academicYear: "2026–27",
+    badge: "Admissions Open 2026–27",
+    batchStartDate: "15 November 2026",
+    highlightTitle: "Admissions Open for Academic Year 2026–27",
+    batchAnnouncement: "New Batches Starting from 15 November 2026",
+    description:
+      "Enrollment is now open for Higher Secondary (11th Science & 11th Commerce) and specialized 11th & 12th Science MHCET Preparation batches. Concept-first teaching with disciplined mentoring.",
+    programs: [
+      {
+        id: "adm-sci-11",
+        name: "11th Science",
+        board: "Maharashtra State Board",
+        subjects: ["Physics", "Chemistry", "Mathematics", "Biology"],
+      },
+      {
+        id: "adm-comm-11",
+        name: "11th Commerce",
+        board: "Maharashtra State Board",
+        subjects: [
+          "Bookkeeping & Accountancy",
+          "Economics",
+          "Organisation of Commerce & Management",
+        ],
+      },
+      {
+        id: "adm-mhcet",
+        name: "11th & 12th Science — MHCET Preparation",
+        board: "Competitive Entrance Pattern",
+        subjects: ["Physics", "Chemistry", "Biology", "Mathematics"],
+      },
+    ],
+  },
+
   // Navigation Links (Exact order: Home, About, Courses, Results, Review, Gallery, Contact)
   navLinks: [
     { label: "Home", href: "#home" },
@@ -73,92 +108,163 @@ export const academyInfo = {
     { label: "Contact", href: "#contact" },
   ],
 
-  // 13 REAL Client-Provided Features
+  // Client-Provided Academy Features & Learning Pillars (Clean, non-repetitive)
   features: [
     {
       id: "f-1",
-      title: "Experienced & Dedicated Teachers",
-      desc: "Passionate educators focused on inspiring clarity and guiding student improvement.",
+      title: "Experienced Faculty",
+      desc: "Passionate, knowledgeable educators focused on patient instruction, deep subject clarity, and student mentoring.",
+      isCore: true,
     },
     {
       id: "f-2",
-      title: "Personal Attention to Every Student",
-      desc: "Nurturing each learner with focused mentoring according to their individual learning pace.",
+      title: "Concept-Based Learning",
+      desc: "Strong emphasis on fundamental understanding and application, eliminating rote learning and exam fear.",
+      isCore: true,
     },
     {
       id: "f-3",
-      title: "Strong Focus on Basic Concepts",
-      desc: "Ensuring deep understanding of fundamentals rather than superficial memorization.",
+      title: "Small Batch Size",
+      desc: "Strictly limited students per batch ensuring every learner receives personal attention, active participation, and individual guidance.",
+      isCore: true,
     },
     {
       id: "f-4",
-      title: "Regular Homework & Practice",
-      desc: "Structured daily assignments to build consistency and reinforce classroom topics.",
+      title: "Regular Tests & Performance Tracking",
+      desc: "Frequent chapter-wise assessments, test series, and systematic progress reviews shared proactively with parents.",
+      isCore: true,
     },
     {
       id: "f-5",
-      title: "Weekly Tests & Revision",
-      desc: "Continuous assessments to track progress, resolve mistakes, and consolidate knowledge.",
+      title: "Supportive & Friendly Environment",
+      desc: "A warm, respectful, and disciplined atmosphere that fosters curiosity, positive study habits, and learner confidence.",
+      isCore: true,
     },
     {
       id: "f-6",
-      title: "Special Guidance for Maths & Science",
-      desc: "Targeted problem-solving drills, formula mastery, and concept visualization.",
+      title: "MHCET-Focused Strategy",
+      desc: "Specialized competitive coaching with high-yield MCQ drills, shortcut methods, formula mastery, and full-length mock exams.",
+      isCore: true,
     },
     {
       id: "f-7",
-      title: "English Grammar & Writing Practice",
-      desc: "Developing strong linguistic expression, comprehension, and board-level presentation skills.",
+      title: "Personal Attention to Every Student",
+      desc: "Tailored mentoring that identifies each student's specific areas of improvement and nurtures their academic potential.",
     },
     {
       id: "f-8",
-      title: "Doubt-Solving Sessions",
-      desc: "Encouraging an open classroom atmosphere where every student question is addressed.",
+      title: "Dedicated Doubt-Solving Sessions",
+      desc: "Open, supportive classroom environment ensuring all student doubts in numericals and theory are resolved thoroughly.",
     },
     {
       id: "f-9",
-      title: "Small Batch Sizes",
-      desc: "Ensuring effective classroom interaction, student focus, and personalized feedback.",
+      title: "Exam-Oriented Preparation",
+      desc: "Structured practice with Maharashtra State Board patterns, past paper solving, and time management strategies.",
     },
     {
       id: "f-10",
-      title: "Regular Progress Monitoring",
-      desc: "Systematic tracking of academic improvement with clear communication for parents.",
-    },
-    {
-      id: "f-11",
-      title: "Exam-Oriented Preparation",
-      desc: "Maharashtra State Board pattern test series, previous paper practice, and time management.",
-    },
-    {
-      id: "f-12",
-      title: "Affordable Fees",
-      desc: "High quality, dedicated coaching made accessible for families.",
-    },
-    {
-      id: "f-13",
-      title: "Friendly & Disciplined Learning Environment",
-      desc: "A warm, respectful atmosphere that inspires self-discipline and positive study habits.",
+      title: "Affordable & Transparent Fees",
+      desc: "High quality, dedicated coaching made accessible for families while upholding exemplary academic standards.",
     },
   ],
 
-  // Upcoming Batches
+  // Structured Academic Programs / Courses
+  courseOfferings: [
+    {
+      id: "course-11-science",
+      title: "11th Science",
+      badge: "Maharashtra State Board",
+      category: "Higher Secondary",
+      tagline: "Comprehensive Foundational Coaching for Science Stream",
+      description:
+        "Bridging 10th SSC concepts to higher secondary science with rigorous theory clarity, laboratory understanding, and numerical mastery.",
+      subjects: [
+        "Physics",
+        "Chemistry",
+        "Mathematics",
+        "Biology",
+      ],
+      highlights: [
+        "Concept-first pedagogy for complex numericals & derivations",
+        "Chapter-wise formula sheets & structured problem-solving",
+        "Weekly assessment tests with performance tracking",
+        "Small batch sizes ensuring individual doubt solving",
+      ],
+      enquiryTarget: "11th Science (Admissions Open 2026–27)",
+    },
+    {
+      id: "course-11-commerce",
+      title: "11th Commerce",
+      badge: "Maharashtra State Board",
+      category: "Higher Secondary",
+      tagline: "Practical & Concept-Driven Coaching for Commerce Fundamentals",
+      description:
+        "Building rock-solid commercial fundamentals, debit-credit principles, journal/ledger proficiency, and structured board answer-writing.",
+      subjects: [
+        "Bookkeeping & Accountancy",
+        "Economics",
+        "Organisation of Commerce & Management",
+      ],
+      highlights: [
+        "Step-by-step accounting format drills & balance sheet mastery",
+        "Real-world application for economics and business concepts",
+        "Presentation & time management techniques for board exams",
+        "Periodic progress reports and continuous student feedback",
+      ],
+      enquiryTarget: "11th Commerce (Admissions Open 2026–27)",
+    },
+    {
+      id: "course-mhcet",
+      title: "11th and 12th Science — MHCET Preparation",
+      badge: "Competitive Entrance Prep",
+      category: "Engineering & Pharmacy Entrance",
+      tagline: "Targeted Strategy for Maharashtra Common Entrance Test",
+      description:
+        "Specialized entrance preparation designed to maximize scores in MHCET. Integrates syllabus mastery with speed-accuracy techniques, shortcut methods, and mock exams.",
+      subjects: [
+        "Physics",
+        "Chemistry",
+        "Biology",
+        "Mathematics",
+      ],
+      highlights: [
+        "MHCET weightage-focused chapter planning & syllabus mapping",
+        "Shortcuts, option elimination & time optimization techniques",
+        "Extensive objective MCQ question bank practice",
+        "Timed full-length mock tests simulating real examination environment",
+      ],
+      enquiryTarget: "11th & 12th Science — MHCET Prep (Admissions Open 2026–27)",
+    },
+  ],
+
+  // Upcoming Batches (Synced with Admissions 2026–27)
   upcomingBatches: [
     {
       id: "batch-science",
       title: "11th Science",
-      status: "New Batch Starting Soon",
+      status: "Admissions Open 2026–27",
       board: "Maharashtra State Board",
-      subjects: "Physics, Chemistry, Maths & Biology",
-      desc: "Admissions opening soon with strong foundational coaching bridging 10th SSC to higher secondary concepts.",
+      startDate: "15 November 2026",
+      subjects: "Physics, Chemistry, Mathematics & Biology",
+      desc: "New batch starting 15 November 2026 with strong foundational coaching bridging 10th SSC to higher secondary concepts.",
     },
     {
       id: "batch-commerce",
       title: "11th Commerce",
-      status: "New Batch Starting Soon",
+      status: "Admissions Open 2026–27",
       board: "Maharashtra State Board",
-      subjects: "Accounts, Economics & Business Studies",
-      desc: "Admissions opening soon with practical, concept-driven coaching for commerce fundamentals.",
+      startDate: "15 November 2026",
+      subjects: "Bookkeeping & Accountancy, Economics, Organisation of Commerce & Management",
+      desc: "New batch starting 15 November 2026 with practical, concept-driven coaching for commerce fundamentals.",
+    },
+    {
+      id: "batch-mhcet",
+      title: "11th & 12th Science MHCET Preparation",
+      status: "Admissions Open 2026–27",
+      board: "MHCET Competitive Entrance",
+      startDate: "15 November 2026",
+      subjects: "Physics, Chemistry, Biology & Mathematics",
+      desc: "New batch starting 15 November 2026 with targeted MCQ drills, shortcut methods, and timed mock test series.",
     },
   ],
 
