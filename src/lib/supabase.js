@@ -183,6 +183,16 @@ export async function refreshAdminSession() {
 }
 
 /**
+ * Subscribes to Supabase authentication state changes (login, logout, token refresh).
+ */
+export function onAuthStateChange(callback) {
+  if (!supabase) {
+    return { data: { subscription: { unsubscribe: () => {} } } };
+  }
+  return supabase.auth.onAuthStateChange(callback);
+}
+
+/**
  * Admin Sign-out
  */
 export async function adminSignOut() {

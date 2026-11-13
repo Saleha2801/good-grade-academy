@@ -18,7 +18,6 @@ export default function ReviewSection({
   reviews = [],
   isLoading = false,
   onOpenReviewModal,
-  onOpenAdminModal,
 }) {
   const isConfigured = isSupabaseConfigured();
 
@@ -47,7 +46,7 @@ export default function ReviewSection({
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3 shrink-0">
+          <div className="shrink-0">
             <button
               type="button"
               onClick={onOpenReviewModal}
@@ -56,42 +55,23 @@ export default function ReviewSection({
               <PlusCircle className="w-4 h-4" />
               <span>Write a Review</span>
             </button>
-
-            <button
-              type="button"
-              onClick={onOpenAdminModal}
-              className="inline-flex items-center gap-1.5 px-3.5 py-3 rounded-xl border border-slate-300 bg-white hover:bg-slate-100 text-slate-700 text-xs font-semibold shadow-2xs transition-all"
-              title="Admin review moderation portal"
-            >
-              <Lock className="w-3.5 h-3.5 text-slate-500" />
-              <span>Admin Portal</span>
-            </button>
           </div>
         </div>
 
         {/* Database Status & Transparency Banner */}
         {!isConfigured ? (
-          <div className="p-5 bg-white rounded-2xl border border-amber-200/90 shadow-2xs mb-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div className="flex items-start sm:items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center shrink-0 border border-amber-200">
-                <Database className="w-5 h-5 text-amber-600" />
-              </div>
-              <div>
-                <h3 className="text-xs sm:text-sm font-bold text-slate-900">
-                  Backend Database Integration Ready (Supabase)
-                </h3>
-                <p className="text-xs text-slate-600 mt-0.5">
-                  Review system is connected to Supabase backend. Please configure your <code className="bg-slate-100 px-1 py-0.5 rounded text-sky-800 font-mono">.env</code> file with <code className="bg-slate-100 px-1 py-0.5 rounded text-sky-800 font-mono">VITE_SUPABASE_URL</code> and <code className="bg-slate-100 px-1 py-0.5 rounded text-sky-800 font-mono">VITE_SUPABASE_ANON_KEY</code> to load live reviews.
-                </p>
-              </div>
+          <div className="p-5 bg-white rounded-2xl border border-amber-200/90 shadow-2xs mb-10 flex items-start sm:items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center shrink-0 border border-amber-200">
+              <Database className="w-5 h-5 text-amber-600" />
             </div>
-            <button
-              type="button"
-              onClick={onOpenAdminModal}
-              className="px-4 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold shrink-0 transition-colors"
-            >
-              Setup Guide
-            </button>
+            <div>
+              <h3 className="text-xs sm:text-sm font-bold text-slate-900">
+                Backend Database Integration Ready (Supabase)
+              </h3>
+              <p className="text-xs text-slate-600 mt-0.5">
+                Review system is connected to Supabase backend. Please configure your <code className="bg-slate-100 px-1 py-0.5 rounded text-sky-800 font-mono">.env.local</code> file with <code className="bg-slate-100 px-1 py-0.5 rounded text-sky-800 font-mono">VITE_SUPABASE_URL</code> and <code className="bg-slate-100 px-1 py-0.5 rounded text-sky-800 font-mono">VITE_SUPABASE_ANON_KEY</code> to load live reviews.
+              </p>
+            </div>
           </div>
         ) : (
           <div className="p-4 bg-white rounded-2xl border border-slate-200/90 shadow-2xs mb-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">

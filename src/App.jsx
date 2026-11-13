@@ -3,7 +3,6 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import EnquiryModal from './components/EnquiryModal';
 import ReviewModal from './components/ReviewModal';
-import AdminReviewModal from './components/AdminReviewModal';
 import LightboxModal from './components/LightboxModal';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 
@@ -16,19 +15,24 @@ import ReviewSection from './sections/ReviewSection';
 import GallerySection from './sections/GallerySection';
 import ContactSection from './sections/ContactSection';
 
+import AdminPage from './pages/AdminPage';
+
 import { galleryItems } from './config/galleryData';
 import { fetchApprovedReviews } from './lib/supabase';
 
+// Exact route matching for /admin and /admin/ only (does not match /administrator or other paths)
+const isAdminRoute = (pathname) => pathname === '/admin' || pathname === '/admin/';
+
 export default function App() {
+  // Client-side route state
+  const [currentPath, setCurrentPath] = useState(window.location.pathname);
+
   // Enquiry Modal state
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState('');
 
   // Review Modal state (Public Submission)
   const [isReviewOpen, setIsReviewOpen] = useState(false);
-
-  // Admin Review Modal state (Moderation Portal)
-  const [isAdminOpen, setIsAdminOpen] = useState(false);
 
   // Reviews Data from Supabase
   const [approvedReviews, setApprovedReviews] = useState([]);
@@ -37,6 +41,21 @@ export default function App() {
   // Lightbox Modal state
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  // Listen to browser history navigation (back/forward buttons)
+  useEffect(() => {
+    const handlePopState = () => {
+      setCurrentPath(window.location.pathname);
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  const navigateTo = (path) => {
+    window.history.pushState({}, '', path);
+    setCurrentPath(path);
+    window.scrollTo(0, 0);
+  };
 
   // Fetch approved reviews from Supabase database
   const loadReviews = useCallback(async () => {
@@ -54,8 +73,11 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    loadReviews();
-  }, [loadReviews]);
+    // Only load reviews when viewing the public landing website
+    if (!isAdminRoute(currentPath)) {
+      loadReviews();
+    }
+  }, [currentPath, loadReviews]);
 
   // Modal Handlers
   const handleOpenEnquiry = (courseName = '') => {
@@ -76,16 +98,8 @@ export default function App() {
     setIsReviewOpen(false);
   };
 
-  const handleOpenAdmin = () => {
-    setIsAdminOpen(true);
-  };
-
-  const handleCloseAdmin = () => {
-    setIsAdminOpen(false);
-  };
-
   const handleReviewSubmitted = () => {
-    // Review is saved with status='pending' in Supabase.
+    // Review is saved with default status='pending' in Supabase.
     // It will appear publicly once approved in the Admin portal.
   };
 
@@ -110,6 +124,12 @@ export default function App() {
     );
   };
 
+  // Route 1: Dedicated Administrator Portal (/admin or /admin/)
+  if (isAdminRoute(currentPath)) {
+    return <AdminPage onNavigateHome={() => navigateTo('/')} />;
+  }
+
+  // Route 2: Public Single-Page Landing Website
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col text-slate-800 font-sans selection:bg-emerald-100 selection:text-emerald-900">
       {/* Sticky Navigation Bar */}
@@ -132,12 +152,11 @@ export default function App() {
         {/* 4. Results */}
         <ResultsSection onOpenEnquiry={handleOpenEnquiry} />
 
-        {/* 5. Review (Real Supabase Backend & Moderation) */}
+        {/* 5. Review (Public Display of Approved Reviews) */}
         <ReviewSection
           reviews={approvedReviews}
           isLoading={isLoadingReviews}
           onOpenReviewModal={handleOpenReview}
-          onOpenAdminModal={handleOpenAdmin}
         />
 
         {/* 6. Gallery (Real Client Posters & Categorized Tabs) */}
@@ -165,13 +184,6 @@ export default function App() {
         isOpen={isReviewOpen}
         onClose={handleCloseReview}
         onReviewSubmitted={handleReviewSubmitted}
-      />
-
-      {/* Admin Review Moderation Modal */}
-      <AdminReviewModal
-        isOpen={isAdminOpen}
-        onClose={handleCloseAdmin}
-        onReviewsUpdated={loadReviews}
       />
 
       {/* Gallery Lightbox Modal */}
